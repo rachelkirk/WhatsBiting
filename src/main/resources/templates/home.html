@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>What's Biting?</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/custom.css">
+
+</head>
+<body>
+<div class="container"></div>
+     <div th:replace="fragments/navbar"></div>
+	<section class=waves>
+		<img src="/images/bigwave1.png" data-speed="5" class="layer"> <img
+			src="/images/bigwave2.png" data-speed="-4" class="layer"> <img
+			src="/images/bigwave3.png" data-speed="9" class="layer"> <img
+			src="/images/bigwave4.png" data-speed="-1" class="layer"> <img
+			src="/images/bigwave5.png" data-speed="2" class="layer"> <img
+			src="/images/bigwave6.png" data-speed="5" class="layer"> <img
+			src="/images/bigwave7.png" data-speed="7" class="layer"> <img
+			src="/images/bigwave8.png" data-speed="-6" class="layer"> <img
+			src="/images/bigwave9.png" data-speed="3" class="layer">
+		<h2 class="layer bigWords">What's Biting?</h2>
+	</section>
+
+	<h2>Welcome to Southeastern NC's best resource for anglers to see which fish are biting, how you're catching them, and where...all in real time!</h2>
+	<br />
+	<h3>Help out your fellow anglers and give your details below!</h3>
+	<br />
+	<div class="container fishBox">
+		<div class="row">
+			<div class="col-7">
+				<h3 id="please">Please use the form below to let us know what's biting:</h3>
+				<form action="#" th:action="@{/result}" th:object="${angler}"
+					method="post">
+
+					<div class="mb-3">
+						<label class="form-label">Your Name:</label> <input class="form-control" type="text" placeholder="Your Name Here"
+							th:field="*{name}" />
+							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">You must enter at least three characters.</span>
+					</div>
+					
+					
+
+					<div class="mb-3">
+						<label class="form-label">Email:</label> <input
+							class="form-control" type="text" placeholder="name@example.com"
+							th:field="*{email}" />
+							<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">You must enter at least three characters.</span>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Your Catch:</label> <input
+							class="form-control" type="text"
+							placeholder="Bluefish, Pompano, Mahi, etc. What did you catch?"
+							th:field="*{fishCatch}" />
+							<span th:if="${#fields.hasErrors('fishCatch')}" th:errors="*{fishCatch}">You must enter at least three characters.</span>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Bait/Tackle:</label> <input
+							class="form-control" type="text" th:field="*{baitType}"
+							placeholder="Give helpful details about your rig." />
+							<span th:if="${#fields.hasErrors('baitType')}" th:errors="*{baitType}">You must enter at least three characters.</span>
+					</div>
+
+
+					<div class="mb-3">
+						<label class="form-label">Location:</label> <input
+							class="form-control" type="text"
+							placeholder="Give helpful details about location and conditions."
+							th:field="*{location}" />
+							<span th:if="${#fields.hasErrors('location')}" th:errors="*{location}">You must enter at least three characters.</span>
+					</div>
+
+					<div>
+						<button type="submit">Submit Your Catch Details</button>
+					</div>
+
+				</form>
+			</div>
+
+
+
+			<div class="col-md-5 align-self-center">
+				<h3 class="text-center forecastLabel">Get Your Local Weather</h3>
+				<form th:action="@{/home}" th:object="${request}" method="post"
+					autocomplete="off">
+					<div class="form-group">
+						<input type="text" th:field="*{zipCode}" placeholder="Zip Code"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<br/>
+						<button  name="Submit"
+							value="Submit" type="Submit">Check Weather</button>
+					</div>
+				</form>
+				<!-- Error handling, invalid message will show if invalid zip code entered -->
+				<span th:if="${data != null && data.name == 'error'}">
+ 					 Invalid zip code. Weather data not found.</span>
+				<hr>
+				<!-- Error handling, won't show weather data section if invalid zip code entered -->
+				<div th:if="${data != null && data.name != 'error'}">
+				<br />
+				<h3>
+					Forecast for <span th:text="${data.name}"></span>
+				</h3>
+				<p>
+					<b>Temperature:</b> <span th:text="${data.main.get('temp')}"></span>
+					°F
+				</p>
+				<p>
+					<b>Cloud Cover:</b> <span th:text="${data.clouds.get('all')}"></span>
+					%
+				</p>
+				<p>
+					<b>Wind:</b> <span th:text="${data.wind.get('speed')}"></span> mph
+				</p>
+				<p>
+					<b>Conditions:</b> <span
+						th:text="${data.weather[0].get('description')}"></span> <img
+						th:src="@{${'http://openweathermap.org/img/w/' 
+                	+ data.weather[0].get('icon') + '.png'}}">
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="spaceBox"></div>
+	</div>
+
+
+	<script src="/custom.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+		crossorigin="anonymous"></script>
+</body>
+</html>

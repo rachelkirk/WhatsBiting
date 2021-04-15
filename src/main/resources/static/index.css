@@ -1,0 +1,51 @@
+body
+{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height: 100vh;
+  background: navy;
+}
+
+
+.stroke
+{ height:500px;
+  width:500px;
+  position:absolute;
+  
+  
+}
+.fill
+{height:500px;
+  width:500px;
+  position:absolute;
+  animation: animate 4s ease-in-out infinite;  
+}
+
+@keyframes animate
+{/* used this site for clip path https://bennettfeely.com/clippy/*/
+  0%, 100%
+  {
+    clip-path: polygon(0% 58%, 9% 56%, 16% 54%, 26% 50%, 32% 46%, 39% 41%, 46% 38%, 53% 37%, 64% 37%, 67% 40%, 73% 42%, 81% 46%, 89% 49%, 96% 52%, 100% 55%, 100% 99%, 0% 100%);
+  }
+  50%
+  {
+    clip-path: polygon(0 38%, 9% 42%, 19% 48%, 26% 54%, 32% 58%, 39% 60%, 48% 62%, 57% 60%, 65% 53%, 69% 50%, 75% 48%, 82% 46%, 88% 45%, 95% 46%, 100% 48%, 100% 99%, 0% 100%);
+  }
+}
+.button1 
+{
+	font-family: 'Century Gothic', sans-serif;
+  position:absolute;
+    bottom: 5%;
+  border-radius: 12px;
+  padding: 10px 24px;
+  background-color: transparent;
+  color: teal;
+  border: 3px solid teal;
+  transition-duration: 0.4s;
+}
+.btn:hover {
+  background-color: blue; /* Green */
+  color: white;
+}
