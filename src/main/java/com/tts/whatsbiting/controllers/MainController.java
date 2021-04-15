@@ -40,6 +40,11 @@ public class MainController
        return "home";
     }
     
+    @GetMapping("/")
+    public String getWelcomePage() {
+        return "index";
+    }
+    
  
 
     
