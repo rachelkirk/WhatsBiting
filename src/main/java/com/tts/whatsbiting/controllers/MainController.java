@@ -53,26 +53,5 @@ public class MainController
     
     
     
-//  @PostMapping(value = "/result")
-//  public String addNewAngler(Angler angler, Model model, Request request) {
-////      anglerRepository.save(new Angler(angler.getName(), 
-////          angler.getEmail(), angler.getFishCatch(), angler.getBaitType(), angler.getLocation(), null));
-////      model.addAttribute("name", angler.getName());
-////      model.addAttribute("email", angler.getEmail());
-////      model.addAttribute("fishCatch", angler.getFishCatch());
-////      model.addAttribute("baitType", angler.getBaitType());
-////      model.addAttribute("location", angler.getLocation());
-//      anglerService.save(angler);
-//      model.addAttribute("angler", new Angler());
-//      return "result";
-//  }
-   
-    
-//    @GetMapping("/")
-//    public String getIndex(Model model) {
-//        Response response = weatherService.getForecast("28401");
-//        model.addAttribute("data", response);
-//        return "index";
-//    } 
-    
+
 }

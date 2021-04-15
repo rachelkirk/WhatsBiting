@@ -19,39 +19,6 @@ public class WhatsBitingApplication {
 		SpringApplication.run(WhatsBitingApplication.class, args);
 	}
 
-//	@Bean
-//    public CommandLineRunner demo(AnglerRepository repository) {
-//        return (args) -> {
-//            // save a couple of anglers
-//            
-//            
-//
-//            // read all anglers
-//            log.info("Anglers found with findAll():");
-//            log.info("-------------------------------");
-//            for (Angler angler : repository.findAll()) {
-//                log.info(angler.toString());
-//            }
-//            log.info("");
-//
-//            // read an individual angler by ID
-//            repository.findById(1L)
-//                .ifPresent(angler -> {
-//                    log.info("Angler found with findById(1L):");
-//                    log.info("--------------------------------");
-//                    log.info(angler.toString());
-//                    log.info("");
-//                });
-//
-//            // read anglers by last name
-//            log.info("Angler found with findByName('Patterson'):");
-//            log.info("--------------------------------------------");
-//            repository.findByName("Patterson").forEach(bauer -> {
-//                log.info(bauer.toString());
-//            });
-//            
-//            log.info("");
-//        };
-//    }
+
 	
 }
